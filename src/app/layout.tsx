@@ -7,8 +7,8 @@ import '../styles/globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'My Next.js App',
-  description: 'A description of my app',
+  title: 'DocDrawQR',
+  description: 'Gere arquivos com seu QRCode',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
