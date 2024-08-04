@@ -1,0 +1,16 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Alterado para usar uma classe local para o botão */
+  .submitButton {
+    align-self: flex-start;
+  }
+  
