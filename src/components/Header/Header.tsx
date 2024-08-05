@@ -33,7 +33,7 @@ const Header: React.FC = () => {
           <Image
             src="/logo-ddqr.png"
             alt="Logo"
-            width={85}
+            width={90}
             height={50}
             className={`transition duration-1000 ease-in-out ${
               scrolled
