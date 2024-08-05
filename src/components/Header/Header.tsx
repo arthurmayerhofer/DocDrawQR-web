@@ -33,7 +33,7 @@ const Header: React.FC = () => {
           <Image
             src="/logo-ddqr.png"
             alt="Logo"
-            width={95}
+            width={85}
             height={50}
             className={`transition duration-1000 ease-in-out ${
               scrolled
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
         <nav className="flex space-x-4">
           <a
             href="#about"
-            className={`transition duration-300 ease-in-out ${
+            className={`text-sm transition duration-300 ease-in-out ${
               scrolled
                 ? "text-gray-900 hover:text-gray-700"
                 : "text-gray-300 hover:text-gray-100"
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
           </a>
           <a
             href="#contact"
-            className={`transition duration-300 ease-in-out ${
+            className={`text-sm transition duration-300 ease-in-out ${
               scrolled
                 ? "text-gray-900 hover:text-gray-700"
                 : "text-gray-300 hover:text-gray-100"
