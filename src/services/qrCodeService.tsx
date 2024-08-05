@@ -1,25 +1,30 @@
-// /services/qrCodeService.ts
+// src/services/qrCodeService.tsx
 import axios from 'axios';
 
 export const generateQRCode = async (text: string, pdfFile: File | null) => {
-  if (!pdfFile) {
-    throw new Error('Nenhum arquivo PDF enviado');
-  }
-
   const formData = new FormData();
   formData.append('text', text);
-  formData.append('pdfFile', pdfFile);
-
-  const response = await fetch('https://doc-draw-qr-api.vercel.app/api/qrcode', {
-    method: 'POST',
-    body: formData,
-  });
-
-  if (!response.ok) {
-    throw new Error('Erro ao gerar QR Code');
+  if (pdfFile) {
+    formData.append('pdfFile', pdfFile);
   }
 
-  const blob = await response.blob();
-  const fileUrl = URL.createObjectURL(blob);
-  return { fileUrl };
+  try {
+    const response = await axios.post('https://doc-draw-qr-api.vercel.app/api/qrcode', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    const blob = new Blob([response.data], { type: 'application/pdf' });
+    const fileUrl = URL.createObjectURL(blob);
+    return { fileUrl };
+  } catch (error) {
+    console.error('Erro ao gerar QR Code:', error);
+    if (axios.isAxiosError(error) && error.response) {
+      const errorMessage = error.response.data.error || 'Erro ao gerar QR Code';
+      throw new Error(errorMessage);
+    } else {
+      throw new Error('Erro ao gerar QR Code');
+    }
+  }
 };

@@ -9,6 +9,7 @@ const HomePage: React.FC = () => {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [formKey, setFormKey] = useState<number>(0); // Usado para forçar a recarga do formulário
   const [buttonClicked, setButtonClicked] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleFormSubmit = async (text: string, pdfFile: File | null) => {
     try {
@@ -17,9 +18,14 @@ const HomePage: React.FC = () => {
         setFileUrl(result.fileUrl);
         setButtonClicked(false); // Mostrar o botão novamente após gerar o PDF
         setFormKey(prevKey => prevKey + 1); // Recarregar o formulário
+        setErrorMessage(null); // Limpar mensagem de erro
       }
-    } catch (error) {
-      console.error('Erro ao gerar QR Code:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrorMessage(error.message || 'Ocorreu um erro ao gerar o QR Code.');
+      } else {
+        setErrorMessage('Ocorreu um erro desconhecido.');
+      }
     }
   };
 
@@ -31,6 +37,11 @@ const HomePage: React.FC = () => {
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 sm:px-6 lg:px-8 my-5">
       <div className="w-full max-w-md p-4 space-y-6 bg-white rounded-lg shadow-lg">
         <QRCodeForm key={formKey} onSubmit={handleFormSubmit} />
+        {errorMessage && (
+          <div className="mt-4 p-2 text-red-600 bg-red-100 rounded">
+            {errorMessage}
+          </div>
+        )}
         {fileUrl && !buttonClicked && (
           <a
             href={fileUrl}
