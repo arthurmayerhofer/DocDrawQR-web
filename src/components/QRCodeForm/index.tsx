@@ -41,7 +41,7 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
 
   return (
     <form
-      className="bg-white rounded-lg space-y-4 mx-auto mt-8 max-w-3xl"
+      className="bg-white space-y-4 mx-auto mt-8 max-w-3xl"
       onSubmit={handleSubmit}
     >
       <h2 className="text-2xl font-extrabold text-gray-800 mb-4">Gerador de QR Code para PDF</h2>
