@@ -58,9 +58,6 @@ input:focus {
   outline: none; /* Remove o contorno padrão */
 }
 
-
-
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
