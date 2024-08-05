@@ -10,7 +10,7 @@ export const generateQRCode = async (text: string, pdfFile: File | null) => {
   formData.append('text', text);
   formData.append('pdfFile', pdfFile);
 
-  const response = await fetch('http://doc-draw-qr-api.vercel.app/api/qrcode', {
+  const response = await fetch('https://doc-draw-qr-api.vercel.app/api/qrcode', {
     method: 'POST',
     body: formData,
   });
