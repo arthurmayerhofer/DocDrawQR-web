@@ -1,17 +1,19 @@
 import { useState, ChangeEvent, FormEvent, DragEvent } from "react";
 
 interface QRCodeFormProps {
-  onSubmit: (text: string, pdfFile: File | null) => void;
+  onSubmit: (text1: string, text2: string, pdfFile: File | null) => void;
 }
 
 const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
-  const [text, setText] = useState<string>("");
+  const [text1, setText1] = useState<string>("");
+  const [text2, setText2] = useState<string>("");
+
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [dragActive, setDragActive] = useState<boolean>(false);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit(text, pdfFile);
+    onSubmit(text1,text2, pdfFile);
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -41,27 +43,37 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
 
   return (
     <form
-      className="bg-white space-y-4 mx-auto mt-8 max-w-3xl"
+      className="bg-white space-y-3 mx-auto max-w-3xl"
       onSubmit={handleSubmit}
     >
-      <h2 className="text-2xl font-extrabold text-gray-800 mb-4">Gerador de QR Code para PDF</h2>
-      <p className="text-base text-gray-600 mb-6">
-        Insira um link e um arquivo PDF para gerar um QR Code integrado ao documento. Nossa ferramenta oferece uma integração fácil e prática.
+      <h2 className="text-2xl font-extrabold text-gray-800 mb-1">Gerador de QR Code para PDF</h2>
+      <p className="text-sm  text-gray-600 mb-4">
+        Preencha os endereços dos links para gerar os QR Code's a serem inseridos no arquivo PDF de sua escolha. 
       </p>
-
-      <div className="flex flex-col space-y-4">
+      {/* Nossa ferramenta oferece uma integração fácil e prática. */}
+      <div className="flex flex-col space-y-3">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Link:</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Link 1:</label>
           <input
             type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={text1}
+            onChange={(e) => setText1(e.target.value)}
             required
             placeholder="https://example.com"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-black-300  focus:ring-clack-500 transition-all duration-300 ease-in-out"
           />
         </div>
-
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Link 2:</label>
+          <input
+            type="text"
+            value={text2}
+            onChange={(e) => setText2(e.target.value)}
+            required
+            placeholder="https://example.com"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:border-black-300  focus:ring-clack-500 transition-all duration-300 ease-in-out"
+          />
+        </div>
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-2">Arquivo PDF:</label>
           <div
@@ -89,7 +101,7 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
                 <i className="fas fa-paperclip text-3xl"></i>
               </div>
               <span className="text-gray-500 mb-2 text-sm font-medium">
-                Arraste o arquivo ou clique para selecionar
+                Arraste o arquivo PDF ou clique para selecionar
               </span>
               {pdfFile && (
                 <span className="text-gray-700 mt-2 text-sm font-medium">{pdfFile.name}</span>
@@ -101,7 +113,7 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
 
       <button
         type="submit"
-        className="w-full px-6 py-3 font-semibold text-white bg-green-500 rounded-lg shadow-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out"
+        className="w-full px-4 py-2 font-semibold text-white bg-green-500 rounded-lg shadow-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out"
       >
         Enviar
       </button>
