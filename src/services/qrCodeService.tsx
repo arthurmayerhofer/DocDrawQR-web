@@ -12,7 +12,7 @@ export const generateQRCode = async (text1: string, text2: string, pdfFile: File
 
   formData.append('pdfFile', pdfFile);
 
-  const response = await fetch(devUrl, {
+  const response = await fetch(prodUrl, {
     method: 'POST',
     body: formData,
   });
