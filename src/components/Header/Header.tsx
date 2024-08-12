@@ -43,6 +43,8 @@ const Header: React.FC = () => {
           />
           {/* <span className="ml-4 text-xl font-semibold">DocDraw QR</span> */}
         </div>
+        <span className="text-xl font-semibold">DocDraw QR</span>
+
         <nav className="flex space-x-4">
           <a
             href="#about"
