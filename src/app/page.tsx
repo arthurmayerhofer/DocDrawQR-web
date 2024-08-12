@@ -46,10 +46,10 @@ const HomePage: React.FC = () => {
         {/* Esquerda: Título Chamativo e Passo a Passo Interativo com Cards */}
         <div className="flex flex-col justify-center w-1/2 p-8 bg-blue-800 text-white space-y-3">
           <h1 className="text-4xl font-bold">DocDraw QR é  <br></br> Prático e Eficiente</h1>
-          <h2 className="text-2xl font-semibold mb-5">Otimize seu Criativo:</h2>
+          <h2 className="text-2x1 font-semibold mb-5">Otimize seu Criativo:</h2>
 
           <div className="space-y-5 mt-5">
-            <div className="space-y-4 mt-3">
+            <div className="space-y-3 mt-3">
               {[
                 "Informe o link dos QR Codes a serem gerados nos campos apropriados.",
                 "Selecione o arquivo PDF que deseja modificar.",
@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
               ].map((step, index) => (
                 <div
                   key={index}
-                  className="relative p-4 bg-white text-gray-800 rounded-lg shadow-md transform transition duration-500 hover:scale-105 hover:shadow-lg cursor-pointer"
+                  className="relative p-3 bg-white text-gray-800 rounded-lg shadow-md transform transition duration-500 hover:scale-105 hover:shadow-lg cursor-pointer"
                 >
                   <span className="absolute top-0 left-0 w-8 h-8 flex items-center justify-center rounded-full bg-green-600 text-white font-bold -translate-y-1/2 -translate-x-1/2">
                     {index + 1}

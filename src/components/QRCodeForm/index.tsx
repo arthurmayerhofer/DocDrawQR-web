@@ -43,12 +43,11 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
 
   return (
     <form
-      className="bg-white space-y-5 mx-auto max-w-3xl"
+      className="bg-white space-y-4 mx-auto max-w-3xl"
       onSubmit={handleSubmit}
     >
-      <h2 className="text-3xl font-extrabold text-gray-800 mb-1">
-        Gere <span className="text-blue-600">agora</span> QRCode's dentro do
-        seu PDF:
+      <h2 className="text-2xl font-extrabold text-gray-800 mb-1">
+        Gere <span className="text-blue-600">agora</span> QRCode's e Links clicáveis em seu PDF:
       </h2>
 
       {/* <p className="text-sm  text-gray-600 mb-4">
@@ -127,7 +126,7 @@ const QRCodeForm: React.FC<QRCodeFormProps> = ({ onSubmit }) => {
 
       <button
         type="submit"
-        className="w-full px-4 py-4 font-semibold text-white bg-green-600 rounded-lg shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out"
+        className="w-full px-4 py-3 font-semibold text-white bg-green-600 rounded-lg shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-300 ease-in-out"
       >
         Enviar
       </button>
