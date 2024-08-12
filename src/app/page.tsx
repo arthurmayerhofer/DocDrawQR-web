@@ -39,9 +39,6 @@ const HomePage: React.FC = () => {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 sm:px-6 lg:px-8 my-9">
-      <h5 className="text-2xl font-extrabold text-gray-800 mb-1">
-        Gerador de QR Code para PDF
-      </h5>
       <div className="w-full max-w-md p-4 space-y-2 bg-white rounded-lg shadow-lg">
         <QRCodeForm key={formKey} onSubmit={handleFormSubmit} />
         {errorMessage && (
